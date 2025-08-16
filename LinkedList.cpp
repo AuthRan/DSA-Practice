@@ -30,9 +30,39 @@ void displayLinkedList(struct Node *p) {
     printf("NULL");
 }
 
+void RdisplayLinkedList(struct Node *p) {
+    if(p != NULL) {
+        // printf("%d ", p->data);
+        // RdisplayLinkedList(p->next);
+        RdisplayLinkedList(p->next);
+        printf("%d ", p->data);
+    }
+}
+
+int count(struct Node *p) {
+    int count = 0;
+    while(p){
+        count++;
+        p= p->next;
+    }
+    return count;
+}
+
+int Rcount(struct Node *p) {
+    if(p){
+        return Rcount(p->next) +1;
+    }
+    else {
+        return 0;
+    }
+}
+
 int main() {
-    int arr[] = {1,3,4,2,10};
+    int arr[] = {1,3,4,2,10,7};
     int n = sizeof(arr) / sizeof(arr[0]);
     createLinkedList(arr, n);
-    displayLinkedList(head);
+    // displayLinkedList(head);
+    // RdisplayLinkedList(head);
+
+    printf("Length of list is %d", Rcount(head));
 }
