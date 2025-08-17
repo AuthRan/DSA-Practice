@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <limits.h>
 struct Node {
     int data;
     struct Node *next;
@@ -57,12 +57,25 @@ int Rcount(struct Node *p) {
     }
 }
 
+int Rmin(struct Node *p) {
+    int min = INT_MAX;
+    if(!p){
+        return INT_MAX;
+    }
+    min = Rmin(p->next);
+    if(min > p->data){
+        min = p->data;
+    }
+    return min;
+}
+
 int main() {
-    int arr[] = {1,3,4,2,10,7};
+    int arr[] = {11,13,14,12,10,7};
     int n = sizeof(arr) / sizeof(arr[0]);
     createLinkedList(arr, n);
     // displayLinkedList(head);
     // RdisplayLinkedList(head);
+    // printf("Length of list is %d", Rcount(head));
+    printf("Min is %d", Rmin(head));
 
-    printf("Length of list is %d", Rcount(head));
 }
