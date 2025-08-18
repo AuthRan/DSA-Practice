@@ -69,6 +69,17 @@ int Rmin(struct Node *p) {
     return min;
 }
 
+struct Node * Search(struct Node *p, int key){
+    while(p){
+        if(key == p->data){
+            printf("Yes!");
+            return p;
+        }
+        p=p->next;
+    }
+    return NULL;
+}
+
 int main() {
     int arr[] = {11,13,14,12,10,7};
     int n = sizeof(arr) / sizeof(arr[0]);
@@ -76,6 +87,7 @@ int main() {
     // displayLinkedList(head);
     // RdisplayLinkedList(head);
     // printf("Length of list is %d", Rcount(head));
-    printf("Min is %d", Rmin(head));
+    // printf("Min is %d", Rmin(head));
+    printf("%d", Search(head, 10));
 
 }
